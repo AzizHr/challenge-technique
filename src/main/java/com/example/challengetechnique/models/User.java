@@ -1,5 +1,7 @@
 package com.example.challengetechnique.models;
 
+import com.example.challengetechnique.enums.Role;
+
 import java.time.LocalDate;
 
 public class User {
@@ -15,4 +17,5 @@ public class User {
     private String email;
     private String username;
     private String password;
+    private Role role;
 }
