@@ -8,7 +8,19 @@ import lombok.RequiredArgsConstructor;
 public class FakeUserGenerator {
     private final Faker faker;
 
-    public void generate(User user) {
-
+    public User generate(User user) {
+        user.setFirstName(faker.name().firstName());
+        user.setLastName(faker.name().lastName());
+        user.setBirthDate(faker.date().birthday());
+        user.setCity();
+        user.setCountry();
+        user.setAvatar();
+        user.setCompany();
+        user.setJobPosition();
+        user.setMobile();
+        user.setEmail();
+        user.setUsername();
+        user.setPassword();
+        user.setRole();
     }
 }

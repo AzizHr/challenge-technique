@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.UUID;
 
 @Setter
@@ -21,7 +22,7 @@ public class User {
     private UUID id;
     private String firstName;
     private String lastName;
-    private LocalDate birthDate;
+    private Date birthDate;
     private String city;
     private String country;
     private String avatar;
