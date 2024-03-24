@@ -4,7 +4,9 @@ import com.example.challengetechnique.enums.Role;
 import com.example.challengetechnique.models.User;
 import com.github.javafaker.Faker;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
+@Component
 @RequiredArgsConstructor
 public class FakeUserGenerator {
     private final Faker faker;
