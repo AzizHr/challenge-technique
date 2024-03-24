@@ -1,5 +1,6 @@
 package com.example.challengetechnique.utils;
 
+import com.example.challengetechnique.enums.Role;
 import com.example.challengetechnique.models.User;
 import com.github.javafaker.Faker;
 import lombok.RequiredArgsConstructor;
@@ -12,15 +13,16 @@ public class FakeUserGenerator {
         user.setFirstName(faker.name().firstName());
         user.setLastName(faker.name().lastName());
         user.setBirthDate(faker.date().birthday());
-        user.setCity();
-        user.setCountry();
-        user.setAvatar();
-        user.setCompany();
-        user.setJobPosition();
-        user.setMobile();
-        user.setEmail();
-        user.setUsername();
-        user.setPassword();
-        user.setRole();
+        user.setCity(faker.address().city());
+        user.setCountry(faker.address().country());
+        user.setAvatar(faker.avatar().image());
+        user.setCompany(faker.company().name());
+        user.setJobPosition(faker.job().position());
+        user.setMobile(faker.phoneNumber().phoneNumber());
+        user.setEmail(faker.internet().emailAddress());
+        user.setUsername(faker.name().username());
+        user.setPassword(faker.internet().password(6, 10));
+        user.setRole(faker.random().nextBoolean() ? Role.ADMIN : Role.USER);
+        return user;
     }
 }
