@@ -22,7 +22,7 @@ public class FakeUserGenerator {
         user.setJobPosition(faker.job().position());
         user.setMobile(faker.phoneNumber().phoneNumber());
         user.setEmail(faker.internet().emailAddress());
-        user.setUsername(faker.name().username());
+        user.setUsername(faker.internet().emailAddress());
         user.setPassword(faker.internet().password(6, 10));
         user.setRole(faker.random().nextBoolean() ? Role.ADMIN : Role.USER);
         return user;
