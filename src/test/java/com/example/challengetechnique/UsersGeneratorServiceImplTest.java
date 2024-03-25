@@ -1,5 +1,6 @@
 package com.example.challengetechnique;
 
+import com.example.challengetechnique.exceptions.InvalidCountValueException;
 import com.example.challengetechnique.models.User;
 import com.example.challengetechnique.services.impl.UsersGeneratorServiceImpl;
 import com.example.challengetechnique.utils.FakeUserGenerator;
@@ -26,7 +27,7 @@ class UsersGeneratorServiceImplTest {
     }
 
     @Test
-    void generateUsers_ReturnsCorrectNumberOfUsers() {
+    void generateUsers_ReturnsCorrectNumberOfUsers() throws InvalidCountValueException {
         // Given
         int count = 5;
         User fakeUser = new User(); // Create a fake user

@@ -1,5 +1,6 @@
 package com.example.challengetechnique.services.impl;
 
+import com.example.challengetechnique.exceptions.InvalidCountValueException;
 import com.example.challengetechnique.models.User;
 import com.example.challengetechnique.services.UsersGeneratorService;
 import com.example.challengetechnique.utils.FakeUserGenerator;
@@ -16,7 +17,10 @@ public class UsersGeneratorServiceImpl implements UsersGeneratorService {
     private final FakeUserGenerator fakeUserGenerator;
 
     @Override
-    public List<User> generateUsers(int count) {
+    public List<User> generateUsers(int count) throws InvalidCountValueException {
+        if(count <= 0) {
+            throw new InvalidCountValueException("Count value must be greater than 0");
+        }
         List<User> users = new ArrayList<>();
 
         for(int i = 0; i < count; i++) {

@@ -1,5 +1,6 @@
 package com.example.challengetechnique.controllers;
 
+import com.example.challengetechnique.exceptions.InvalidCountValueException;
 import com.example.challengetechnique.models.User;
 import com.example.challengetechnique.services.UsersGeneratorService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -19,7 +20,7 @@ public class UserGeneratorController {
     private final UsersGeneratorService usersGeneratorService;
 
     @GetMapping("/generate")
-    public ResponseEntity<Object> generate(@RequestParam int count) throws IOException {
+    public ResponseEntity<Object> generate(@RequestParam int count) throws IOException, InvalidCountValueException {
         List<User> users = usersGeneratorService.generateUsers(count);
 
         // Serialize users to JSON

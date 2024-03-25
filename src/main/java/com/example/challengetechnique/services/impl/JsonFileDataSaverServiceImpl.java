@@ -1,6 +1,8 @@
 package com.example.challengetechnique.services.impl;
 
 import com.example.challengetechnique.dtos.response.UploadResponse;
+import com.example.challengetechnique.exceptions.EmailAlreadyInUseException;
+import com.example.challengetechnique.exceptions.UsernameAlreadyInUseException;
 import com.example.challengetechnique.models.User;
 import com.example.challengetechnique.repositories.UserRepository;
 import com.example.challengetechnique.services.JsonFileDateSaverService;
@@ -35,8 +37,14 @@ public class JsonFileDataSaverServiceImpl implements JsonFileDateSaverService {
         List<User> failedUsers = new ArrayList<>();
         for (User user : users) {
             try {
-                user.setPassword(passwordEncoder.encode(user.getPassword()));
-                savedUsers.add(userRepository.save(user));
+                if(userRepository.findUserByUsername(user.getUsername()).isPresent()) {
+                    throw new UsernameAlreadyInUseException("This username is already in use");
+                } else if(userRepository.findUserByEmail(user.getEmail()).isPresent()) {
+                    throw new EmailAlreadyInUseException("This email is already in use");
+                } else {
+                    user.setPassword(passwordEncoder.encode(user.getPassword()));
+                    savedUsers.add(userRepository.save(user));
+                }
             } catch (Exception e) {
                 failedUsers.add(user);
             }
